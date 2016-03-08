@@ -1,6 +1,26 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
+    "vNetName": {
+      "value": "TestARMVNET"
+    },
+
+    "vNetAddressPrefix": {
+      "value": "10.10.0.0/24"
+    },
+
+    "Location": {
+      "value": "West Europe"
+    },
+
+    "vNetSubnetBackEndPrefix": {
+      "value": "10.10.0.0/24"
+    },
+
+    "vNetSubnetBackEndName": {
+      "value": "TestBackEndSubnet"
     }
+
+  }
 }

@@ -9,21 +9,70 @@
         "Description": "Specify a VNET name"
       }
     },
-    "vNetSubnet": {
+
+    "vNetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.10.10.0/24"
-    }
-  },
-  "variables": {
-    "location": "[ResourceGroup().location]",
-    "apiVersion": {
-      "vNets": {
-        "VirtualNetworks": "2015-08-01"
+      "defaultValue": "10.10.10.0/24",
+      "metadata": {
+        "Description": "Address prefix"
+      }
+    },
+
+    "Location": {
+      "type": "string",
+      "metadata": {
+        "Description": "Deployment Location"
+      }
+    },
+
+    "vNetSubnetBackEndPrefix": {
+      "type": "string",
+      "metadata": {
+        "Description": "Subnet Prefix"
+      }
+    },
+
+    "vNetSubnetBackEndName": {
+      "type": "string",
+      "metadata": {
+        "Description" :  "Subnet BackenEnd Name"
       }
     }
   },
-    "resources": [
-    ],
-    "outputs": {
+
+  "variables": {
+    "apiVersion": {
+      "vNets": {
+        "VirtualNetworks": "2015-06-15"
+      }
     }
+  },
+
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersion').vNets.VirtualNetworks]",
+      "location": "[parameters('Location')]",
+      "name": "[parameters('vNetName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vNetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('vNetSubnetBackEndName')]",
+            "properties": {
+              "addressPrefix": "[parameters('vNetSubnetBackEndPrefix')]"
+            }
+          }
+        ]
+      }
+    }
+  ],
+
+  "outputs": {
+
+  }
 }
