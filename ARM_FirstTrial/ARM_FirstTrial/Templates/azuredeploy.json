@@ -35,7 +35,21 @@
     "vNetSubnetBackEndName": {
       "type": "string",
       "metadata": {
-        "Description" :  "Subnet BackenEnd Name"
+        "Description": "Subnet Backend Name"
+      }
+    },
+
+    "vNetSubnetFrontEndPrefix": {
+      "type": "string",
+      "metadata": {
+        "Description": "Subnet Prefix"
+      }
+    },
+
+    "vNetSubnetFrontEndName": {
+      "type": "string",
+      "metadata": {
+        "Description": "Subnet Frontend Name"
       }
     }
   },
@@ -65,6 +79,13 @@
             "name": "[parameters('vNetSubnetBackEndName')]",
             "properties": {
               "addressPrefix": "[parameters('vNetSubnetBackEndPrefix')]"
+            }
+          },
+
+          {
+            "name": "[parameters('vNetSubnetFrontEndName')]",
+            "properties": {
+              "addressPrefix": "[parameters('vNetSubnetFrontEndPrefix')]"
             }
           }
         ]
