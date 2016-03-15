@@ -3,11 +3,11 @@
     "contentVersion": "1.0.0.0",
   "parameters": {
     "vNetName": {
-      "value": "TestARMVNET"
+      "value": "RSG_MFC_NOCVNET"
     },
 
     "vNetAddressPrefix": {
-      "value": "10.10.0.0/16"
+      "value": "172.20.240.0.20"
     },
 
     "Location": {
@@ -15,7 +15,7 @@
     },
 
     "vNetSubnetBackEndPrefix": {
-      "value": "10.10.10.0/24"
+      "value": "172.20.245.0/24"
     },
 
     "vNetSubnetBackEndName": {

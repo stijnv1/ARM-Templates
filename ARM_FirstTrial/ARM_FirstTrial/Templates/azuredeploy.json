@@ -6,7 +6,7 @@
       "type": "string",
       "defaultValue": "VNET01",
       "metadata": {
-        "Description": "Specify a VNET name"
+        "Description": "VNET Name"
       }
     },
 
@@ -14,7 +14,7 @@
       "type": "string",
       "defaultValue": "10.10.10.0/24",
       "metadata": {
-        "Description": "Address prefix"
+        "Description": "VNET subnet"
       }
     },
 
@@ -28,28 +28,28 @@
     "vNetSubnetBackEndPrefix": {
       "type": "string",
       "metadata": {
-        "Description": "Subnet Prefix"
+        "Description": "Backend Subnet"
       }
     },
 
     "vNetSubnetBackEndName": {
       "type": "string",
       "metadata": {
-        "Description": "Subnet Backend Name"
+        "Description": "Backend Subnet Name"
       }
     },
 
     "vNetSubnetFrontEndPrefix": {
       "type": "string",
       "metadata": {
-        "Description": "Subnet Prefix"
+        "Description": "Frontend Subnet"
       }
     },
 
     "vNetSubnetFrontEndName": {
       "type": "string",
       "metadata": {
-        "Description": "Subnet Frontend Name"
+        "Description": "Frontend Subnet Name"
       }
     }
   },
