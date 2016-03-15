@@ -51,6 +51,13 @@
       "metadata": {
         "Description": "Frontend Subnet Name"
       }
+    },
+
+    "Tags_Values": {
+      "type": "string",
+      "metadata": {
+        "Description": "Tag value"
+      }
     }
   },
 
@@ -89,8 +96,13 @@
             }
           }
         ]
+      },
+      "tags": {
+        "displayName": "[parameters('Tags_Values')]"
       }
-    }
+    },
+
+
   ],
 
   "outputs": {

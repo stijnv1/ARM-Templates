@@ -3,11 +3,11 @@
     "contentVersion": "1.0.0.0",
   "parameters": {
     "vNetName": {
-      "value": "RSG_MFC_NOCVNET"
+      "value": "VNET_MFC_MGT"
     },
 
     "vNetAddressPrefix": {
-      "value": "172.20.240.0.20"
+      "value": "172.20.240.0/20"
     },
 
     "Location": {
@@ -19,15 +19,19 @@
     },
 
     "vNetSubnetBackEndName": {
-      "value": "TestBackEndSubnet"
+      "value": "VNET_MFC_SUBNET_Servers"
     },
 
     "vNetSubnetFrontEndPrefix": {
-      "value": "10.10.11.0/24"
+      "value": "172.20.240.0/24"
     },
 
     "vNetSubnetFrontEndName": {
-      "value": "TestFrontEndSubnet"
+      "value": "VNET_MFC_SUBNET_DMZ"
+    },
+
+    "Tags_Values": {
+      "value": "myFerrantiCloud VNET MGT"
     }
 
   }
