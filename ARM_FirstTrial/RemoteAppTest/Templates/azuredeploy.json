@@ -1,0 +1,90 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vNetName": {
+      "type": "string",
+      "defaultValue": "VNET01",
+      "metadata": {
+        "Description": "VNET Name"
+      }
+    },
+
+    "vNetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.10.10.0/24",
+      "metadata": {
+        "Description": "VNET subnet"
+      }
+    },
+
+    "Location": {
+      "type": "string",
+      "metadata": {
+        "Description": "Deployment Location"
+      }
+    },
+
+    "vNetSubnetBackEndPrefix": {
+      "type": "string",
+      "metadata": {
+        "Description": "Backend Subnet"
+      }
+    },
+
+    "vNetSubnetBackEndName": {
+      "type": "string",
+      "metadata": {
+        "Description": "Backend Subnet Name"
+      }
+    },
+
+    "Tags_Values": {
+      "type": "string",
+      "metadata": {
+        "Description": "Tag value"
+      }
+    }
+  },
+
+  "variables": {
+    "apiVersion": {
+      "vNets": {
+        "VirtualNetworks": "2015-06-15"
+      }
+    }
+  },
+
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersion').vNets.VirtualNetworks]",
+      "location": "[parameters('Location')]",
+      "name": "[parameters('vNetName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vNetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('vNetSubnetBackEndName')]",
+            "properties": {
+              "addressPrefix": "[parameters('vNetSubnetBackEndPrefix')]"
+            }
+          }
+        ]
+      },
+      "tags": {
+        "displayName": "[parameters('Tags_Values')]"
+      }
+    }
+
+
+  ],
+
+  "outputs": {
+
+  }
+}

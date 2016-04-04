@@ -1,0 +1,30 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vNetName": {
+      "value": "VNET_MFCBE_REMOTEAPP"
+    },
+
+    "vNetAddressPrefix": {
+      "value": "10.10.0.0/20"
+    },
+
+    "Location": {
+      "value": "West Europe"
+    },
+
+    "vNetSubnetBackEndPrefix": {
+      "value": "10.10.1.0/24"
+    },
+
+    "vNetSubnetBackEndName": {
+      "value": "VNET_MFCBE_SUBNET_Servers"
+    },
+
+    "Tags_Values": {
+      "value": "myFerrantiCloudBE VNET RemoteApp"
+    }
+
+  }
+}
