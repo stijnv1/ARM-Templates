@@ -2,16 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
-
-    "vNetName": {
+    "Location": {
       "type": "string",
-      "defaultValue": "VNET01",
       "metadata": {
-        "Description": "VNET Name"
+        "Description": "Deployment Location"
       }
     },
-
-
+    "Tags_Value": {
+      "type": "string",
+      "metadata": {
+        "Description": "Tag Value"
+      }
+    },
     "vNetAddressPrefix": {
       "type": "string",
       "defaultValue": "10.10.10.0/24",
@@ -19,35 +21,62 @@
         "Description": "VNET subnet"
       }
     },
-
-
-    "Location": {
+    "vNetName": {
       "type": "string",
+      "defaultValue": "VNET01",
       "metadata": {
-        "Description": "Deployment Location"
+        "Description": "VNET Name"
       }
     },
-
-
-    "vNetSubnetBackEndPrefix": {
-      "type": "string",
-      "metadata": {
-        "Description": "Backend Subnet"
-      }
-    },
-
-
     "vNetSubnetBackEndName": {
       "type": "string",
       "metadata": {
         "Description": "Backend Subnet Name"
       }
+    },
+    "vNetSubnetBackEndPrefix": {
+      "type": "string",
+      "metadata": {
+        "Description": "Backend Subnet"
+      }
     }
   },
-    "variables": {
-    },
-    "resources": [
-    ],
-    "outputs": {
+
+  "variables": {
+    "apiVersion": {
+      "vNets": {
+        "VirtualNetworks": "2015-06-15"
+      }
     }
-}
+  },
+
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersion').vNets.VirtualNetworks]",
+      "location": "[parameters('Location')]",
+      "name": "[parameters('vNetName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vNetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('vNetSubnetBackEndName')]",
+            "properties": {
+              "addressPrefix": "[parameters('vNetSubnetBackEndPrefix')]"
+            }
+          }
+        ]
+      },
+      "tags": {
+        "displayName": "[parameters('Tags_Value')]"
+      }
+    }
+   ],
+
+      "outputs": {
+      }
+    }
