@@ -69,6 +69,20 @@
       "metadata": {
         "description": "Name of the checkpoint cluster deployment"
       }
+    },
+
+    "CheckPointClusterNode1Name": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the first node of the checkpoint cluster deployment"
+      }
+    },
+
+    "CheckPointClusterNode2Name": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the second node of the checkpoint cluster deployment"
+      }
     }
 
   },
@@ -79,10 +93,12 @@
     "apiVersion": {
       "vNets": {
         "VirtualNetworks": "2015-06-15"
-      }
+      },
+      "PIP": "2015-06-15"
     },
-    "CheckPointClusterPublicIPName": ""
-    
+    "CheckPointClusterPublicIPName": "[concat(parameters('CheckPointClusterName'),'_PIP')]",
+    "CheckPointClusterNode1PublicIPName": "[concat(parameters('CheckPointClusterNode1Name'),'_PIP')]",
+    "CheckPointClusterNode2PublicIPName": "[concat(parameters('CheckPointClusterNode2Name'),'_PIP')]"
   },
 
   "resources": [
@@ -120,6 +136,45 @@
             }
           }
         ]
+      }
+    },
+
+    {
+      "apiVersion": "[variables('apiVersion').PIP]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('CheckPointClusterPublicIPName')]",
+      "location": "[variables('DeployLocation')]",
+      "properties": {
+        "publicIPAllocationMethod": "Static"
+      },
+      "tags": {
+        "displayName": "PublicIPAddress - Cluster"
+      }
+    },
+
+    {
+      "apiVersion": "[variables('apiVersion').PIP]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('CheckPointClusterNode1PublicIPName')]",
+      "location": "[variables('DeployLocation')]",
+      "properties": {
+        "publicIPAllocationMethod": "Static"
+      },
+      "tags": {
+        "displayName": "PublicIPAddress - Node1"
+      }
+    },
+
+    {
+      "apiVersion": "[variables('apiVersion').PIP]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('CheckPointClusterNode2PublicIPName')]",
+      "location": "[variables('DeployLocation')]",
+      "properties": {
+        "publicIPAllocationMethod": "Static"
+      },
+      "tags": {
+        "displayName": "PublicIPAddress - Node2"
       }
     }
 

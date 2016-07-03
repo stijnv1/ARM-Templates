@@ -4,7 +4,7 @@
   "parameters": {
 
     "vNetName": {
-      "value": "OpsTrainingVNET"
+      "value": "VNET_CheckPoint"
     },
 
     "vNetAddressPrefix": {
@@ -32,11 +32,19 @@
     },
 
     "vnetSubnetPrefix3": {
-      "value": "10.0.1.0/24"
+      "value": "10.0.2.0/24"
     },
 
     "CheckPointClusterName": {
-      "value": "TestDeploy"
+      "value": "CheckPointCL"
+    },
+
+    "CheckPointClusterNode1Name": {
+      "value": "CheckPointCL_Node1"
+    },
+
+    "CheckPointClusterNode2Name": {
+      "value": "CheckPointCL_Node2"
     }
 
   }
