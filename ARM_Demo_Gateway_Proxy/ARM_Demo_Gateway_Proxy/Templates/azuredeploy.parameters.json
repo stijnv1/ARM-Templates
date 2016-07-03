@@ -1,6 +1,37 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
+    "vNetName": {
+      "value": "VNET_TESTDEPLOY"
+    },
+
+    "vNetAddressPrefix": {
+      "value": "10.0.0.0/24"
+    },
+
+    "Location": {
+      "value": "West Europe"
+    },
+
+    "vNetSubnetBackEndPrefix": {
+      "value": "10.0.0.0/27"
+    },
+
+    "vNetSubnetBackEndName": {
+      "value": "SUBNET_1_VNET_TESTDEPLOY"
+    },
+
+    "vNetSubnetGWName": {
+      "value": "Gateway Subnet"
+    },
+
+    "vNetSubnetGWPrefix": {
+      "value": "10.0.0.31/27"
+    },
+
+    "Tags_Value": {
+      "value": "First Subnet"
     }
+  }
 }
