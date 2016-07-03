@@ -12,7 +12,7 @@
     },
 
     "vNetSubnetName1": {
-      "value": "Apps"
+      "value": "FrontEnd"
     },
 
     "vnetSubnetPrefix1": {
@@ -20,7 +20,7 @@
     },
 
     "vNetSubnetName2": {
-      "value": "Data"
+      "value": "Web"
     },
 
     "vnetSubnetPrefix2": {
@@ -28,11 +28,15 @@
     },
 
     "vNetSubnetName3": {
-      "value": "Data"
+      "value": "App"
     },
 
     "vnetSubnetPrefix3": {
       "value": "10.0.1.0/24"
+    },
+
+    "CheckPointClusterName": {
+      "value": "TestDeploy"
     }
 
   }

@@ -62,6 +62,13 @@
       "metadata": {
         "description": "Subnet prefix"
       }
+    },
+
+    "CheckPointClusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the checkpoint cluster deployment"
+      }
     }
 
   },
@@ -73,8 +80,9 @@
       "vNets": {
         "VirtualNetworks": "2015-06-15"
       }
-    }
-
+    },
+    "CheckPointClusterPublicIPName": ""
+    
   },
 
   "resources": [
