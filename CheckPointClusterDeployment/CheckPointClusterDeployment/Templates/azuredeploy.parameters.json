@@ -1,6 +1,47 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
+
+    "adminPassword": {
+      "value": "P@ssw0rd"
+    },
+
+    "authenticationType": {
+      "value": "password"
+    },
+
+    "newStorageAccountName": {
+      "value": "stasverhocheckpoint12"
+    },
+
+    "offer": {
+      "value": "R7730PAYG"
+    },
+
+    "sshPublicKey": {
+      "value": ""
+    },
+
+    "clusterName": {
+      "value": "CheckPointCL"
+    },
+
+    "vmSize": {
+      "value": "Standard_A3"
+    },
+
+    "roleUserName": {
+      "value": "fcs_sverho@stijnvdemolab.onmicrosoft.com"
+    },
+
+    "rolePassword": {
+      "value": "ZC!+:XE|pK#_v->e"
+    },
+
+    "sicKey": {
+      "value": "3Y7Y^sm8"
     }
+
+  }
 }
