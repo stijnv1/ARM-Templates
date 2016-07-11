@@ -20,6 +20,9 @@
 
   },
   "variables": {
+    "rdsMainGW": "[concat(parameters('trafficManagerProfiles_rdsMaingw_name'),'-rdgw')]",
+    "rdsgwBE": "[concat(parameters('trafficManagerProfiles_rdsgwbe_name'),'-rdgw')]",
+    "rdsgwNL": "[concat(parameters('trafficManagerProfiles_rdsgwnl_name'),'-rdgw')]"
   },
 
 
@@ -27,15 +30,15 @@
 
     {
       "type": "Microsoft.Network/trafficManagerProfiles",
-      "name": "[parameters('trafficManagerProfiles_rdsMaingw_name')]",
+      "name": "[variables('rdsMainGW')]",
       "apiVersion": "2015-11-01",
       "location": "global",
       "properties": {
         "profileStatus": "Enabled",
         "trafficRoutingMethod": "Performance",
         "dnsConfig": {
-          "relativeName": "[parameters('trafficManagerProfiles_rdsMaingw_name')]",
-          "fqdn": "[concat(parameters('trafficManagerProfiles_rdsMaingw_name'),'-rdgw.trafficmanager.net')]",
+          "relativeName": "[variables('rdsMainGW')]",
+          "fqdn": "[concat(variables('rdsMainGW'),'.trafficmanager.net')]",
           "ttl": 300
         },
         "monitorConfig": {
@@ -49,8 +52,8 @@
             "type": "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "targetResourceId": "[resourceId('Microsoft.Network/trafficManagerProfiles', parameters('trafficManagerProfiles_rdsgwnl_name'))]",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwnl_name'),'-rdgw.trafficmanager.net')]",
+              "targetResourceId": "[resourceId('Microsoft.Network/trafficManagerProfiles', variables('rdsgwNL'))]",
+              "target": "[concat(variables('rdsgwNL'),'.trafficmanager.net')]",
               "weight": 1,
               "priority": 2,
               "endpointLocation": "West Europe",
@@ -62,8 +65,8 @@
             "type": "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "targetResourceId": "[resourceId('Microsoft.Network/trafficManagerProfiles', parameters('trafficManagerProfiles_rdsgwbe_name'))]",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwbe_name'),'-rdgw.trafficmanager.net')]",
+              "targetResourceId": "[resourceId('Microsoft.Network/trafficManagerProfiles', variables('rdsgwBE'))]",
+              "target": "[concat(variables('rdsgwBE'),'.trafficmanager.net')]",
               "weight": 1,
               "priority": 3,
               "endpointLocation": "North Europe",
@@ -73,22 +76,22 @@
         ]
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/trafficManagerProfiles', parameters('trafficManagerProfiles_rdsgwnl_name'))]",
-        "[resourceId('Microsoft.Network/trafficManagerProfiles', parameters('trafficManagerProfiles_rdsgwbe_name'))]"
+        "[resourceId('Microsoft.Network/trafficManagerProfiles', variables('rdsgwNL'))]",
+        "[resourceId('Microsoft.Network/trafficManagerProfiles', variables('rdsgwBE'))]"
       ]
     },
 
     {
       "type": "Microsoft.Network/trafficManagerProfiles",
-      "name": "[parameters('trafficManagerProfiles_rdsgwbe_name')]",
+      "name": "[variables('rdsgwBE')]",
       "apiVersion": "2015-11-01",
       "location": "global",
       "properties": {
         "profileStatus": "Enabled",
         "trafficRoutingMethod": "Priority",
         "dnsConfig": {
-          "relativeName": "[parameters('trafficManagerProfiles_rdsgwbe_name')]",
-          "fqdn": "[concat(parameters('trafficManagerProfiles_rdsgwbe_name'),'-rdgw.trafficmanager.net')]",
+          "relativeName": "[variables('rdsgwBE')]",
+          "fqdn": "[concat(variables('rdsgwBE'),'.trafficmanager.net')]",
           "ttl": 300
         },
         "monitorConfig": {
@@ -102,7 +105,7 @@
             "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwbe_name'),'-rdgw.myferranticloud.com')]",
+              "target": "[concat(variables('rdsgwBE'),'.myferranticloud.com')]",
               "weight": 1,
               "priority": 1,
               "endpointLocation": null
@@ -113,7 +116,7 @@
             "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwnl_name'),'-rdgw.myferranticloud.com')]",
+              "target": "[concat(variables('rdsgwNL'),'.myferranticloud.com')]",
               "weight": 2,
               "priority": 2,
               "endpointLocation": null
@@ -126,15 +129,15 @@
 
     {
       "type": "Microsoft.Network/trafficManagerProfiles",
-      "name": "[parameters('trafficManagerProfiles_rdsgwnl_name')]",
+      "name": "[variables('rdsgwNL')]",
       "apiVersion": "2015-11-01",
       "location": "global",
       "properties": {
         "profileStatus": "Enabled",
         "trafficRoutingMethod": "Priority",
         "dnsConfig": {
-          "relativeName": "[parameters('trafficManagerProfiles_rdsgwnl_name')]",
-          "fqdn": "[concat(parameters('trafficManagerProfiles_rdsgwnl_name'),'-rdgw.trafficmanager.net')]",
+          "relativeName": "[variables('rdsgwNL')]",
+          "fqdn": "[concat(variables('rdsgwNL'),'.trafficmanager.net')]",
           "ttl": 300
         },
         "monitorConfig": {
@@ -148,7 +151,7 @@
             "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwnl_name'),'-rdgw.myferranticloud.com')]",
+              "target": "[concat(variables('rdsgwNL'),'.myferranticloud.com')]",
               "weight": 1,
               "priority": 1,
               "endpointLocation": null
@@ -159,7 +162,7 @@
             "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
             "properties": {
               "endpointStatus": "Enabled",
-              "target": "[concat(parameters('trafficManagerProfiles_rdsgwbe_name'),'-rdgw.myferranticloud.com')]",
+              "target": "[concat(variables('rdsgwBE'),'.myferranticloud.com')]",
               "weight": 2,
               "priority": 2,
               "endpointLocation": null
